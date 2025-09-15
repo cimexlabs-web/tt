@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*,java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/edit_form_css.css">
     <title>Edit About</title>
     <style>
         body {
@@ -13,7 +13,7 @@
             padding: 0;
         }
         .edit-about {
-            max-width: 700px;
+            max-width: 900px;
             margin: 50px auto;
             background: #fff;
             padding: 20px;
@@ -24,12 +24,26 @@
             text-align: center;
             margin-bottom: 20px;
         }
+        .image-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .db-image {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+        }
         .image-placeholder {
             width: 200px;
             height: 200px;
             border: 2px dashed #aaa;
             border-radius: 10px;
-            margin: 0 auto 15px auto;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -67,8 +81,18 @@
             border: 1px solid #ccc;
             margin-bottom: 15px;
         }
-
-
+        .back-btn {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: #555;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .back-btn:hover {
+            background: #333;
+        }
     </style>
 </head>
 <body>
@@ -77,38 +101,60 @@
         response.sendRedirect("login.html");
         return;
     }
+
+    // ====== PLACEHOLDER: Fetch images from DB ======
+    // Replace with your backend DB code or servlet calls
+    // Example: Map<Integer,String> images = getImagesFromDB();
+    Map<Integer,String> images = new HashMap<>();
+    images.put(1, "fetchImageServlet?id=1"); // Logo
+    images.put(2, "fetchImageServlet?id=2"); // Cover
+    images.put(3, "fetchImageServlet?id=3"); // Photo 1
+    images.put(4, "fetchImageServlet?id=4"); // Photo 2
+    images.put(5, "fetchImageServlet?id=5"); // Photo 3
+    images.put(6, "fetchImageServlet?id=6"); // Photo 4
 %>
+
+<!-- Back Button -->
+<a href="javascript:history.back()" class="back-btn">← Back</a>
 
 <!-- Logo -->
 <div class="edit-about">
     <div class="edit-header"><h1>Change LOGO</h1></div>
-    <form action="uploadEdit" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="1">
-        <label for="imageUpload0">
-            <div class="image-placeholder" id="placeholder0">Click or Drag & Drop Image Here</div>
-        </label>
-        <input type="file" name="image1" id="imageUpload0" accept="image/*" onchange="previewImage(event, 0)">
-        <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
-    </form>
+    <div class="image-wrapper">
+        <!-- DB Image -->
+        <div class="db-image" style="background-image:url('<%= images.get(1) %>');"></div>
+        <!-- Upload Placeholder -->
+        <form action="uploadServlet" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="1">
+            <label for="imageUpload0">
+                <div class="image-placeholder" id="placeholder0">Click or Drag & Drop Image Here</div>
+            </label>
+            <input type="file" name="image" id="imageUpload0" accept="image/*" onchange="previewImage(event, 0)">
+            <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
+        </form>
+    </div>
 </div>
 
 <!-- Cover Photo -->
 <div class="edit-about">
     <div class="edit-header"><h1>Change Cover Photo</h1></div>
-    <form action="uploadEdit" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="2">
-        <label for="imageUpload1">
-            <div class="image-placeholder" id="placeholder1">Click or Drag & Drop Image Here</div>
-        </label>
-        <input type="file" name="image2" id="imageUpload1" accept="image/*" onchange="previewImage(event, 1)">
-        <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
-    </form>
+    <div class="image-wrapper">
+        <div class="db-image" style="background-image:url('<%= images.get(2) %>');"></div>
+        <form action="uploadServlet" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="2">
+            <label for="imageUpload1">
+                <div class="image-placeholder" id="placeholder1">Click or Drag & Drop Image Here</div>
+            </label>
+            <input type="file" name="image" id="imageUpload1" accept="image/*" onchange="previewImage(event, 1)">
+            <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
+        </form>
+    </div>
 </div>
 
 <!-- About Us Text -->
 <div class="edit-about">
     <div class="edit-header"><h1>Edit About Us Text</h1></div>
-    <form action="uploadEdit" method="post" enctype="multipart/form-data">
+    <form action="updateAboutServlet" method="post">
         <textarea name="aboutUs" placeholder="Write About Us here..."><%= request.getAttribute("aboutText") != null ? request.getAttribute("aboutText") : "" %></textarea>
         <div style="text-align:center;"><button type="submit" class="submit-btn">Update Text</button></div>
     </form>
@@ -121,14 +167,17 @@
 %>
 <div class="edit-about">
     <div class="edit-header"><h1>Change About Us <%= photoNames[i] %></h1></div>
-    <form action="uploadEdit" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<%= i+3 %>"> <!-- IDs 3-6 -->
-        <label for="imageUpload<%=i+2%>">
-            <div class="image-placeholder" id="placeholder<%=i+2%>">Click or Drag & Drop Image Here</div>
-        </label>
-        <input type="file" name="image<%= i+3 %>" id="imageUpload<%=i+2%>" accept="image/*" onchange="previewImage(event, <%=i+2%>)">
-        <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
-    </form>
+    <div class="image-wrapper">
+        <div class="db-image" style="background-image:url('<%= images.get(i+3) %>');"></div>
+        <form action="uploadServlet" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%= i+3 %>"> <!-- IDs 3-6 -->
+            <label for="imageUpload<%=i+2%>">
+                <div class="image-placeholder" id="placeholder<%=i+2%>">Click or Drag & Drop Image Here</div>
+            </label>
+            <input type="file" name="image" id="imageUpload<%=i+2%>" accept="image/*" onchange="previewImage(event, <%=i+2%>)">
+            <div style="text-align:center;"><button type="submit" class="submit-btn">Submit</button></div>
+        </form>
+    </div>
 </div>
 <% } %>
 
