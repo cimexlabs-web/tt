@@ -92,13 +92,13 @@
             <div class="vision-content">
                 
                 <div class="vision-text">
-                    <p>To be recognized as one of the leading university sports clubs,
-      nurturing talented players while fostering teamwork, discipline, and
-      a love for the game of table tennis.</p>
+                    <p><%String vi= about.about(7);
+                            %>
+                            <%=vi%></p>
                     
                 </div>
                 <div class="vision-image">
-                    <img src="Images/vision.jpg">
+                    <img src="mainImage?id=7" alt="Table tennis match at NSBM">
                 </div>
             </div>
         </div>

@@ -64,7 +64,7 @@
 <div class="edit-about">
     <div class="edit-header"><h1>Edit About Us Text</h1></div>
     <form action="uploadEdit" method="post">
-        <textarea name="aboutUs" placeholder="Write About Us here..." required><%= request.getAttribute("aboutText") != null ? request.getAttribute("aboutText") : "" %></textarea>
+        <textarea name="txt" placeholder="Write About Us here..." required><%= request.getAttribute("aboutText") != null ? request.getAttribute("aboutText") : "" %></textarea>
         <div style="text-align:center;"><button type="submit" class="submit-btn">Update Text</button></div>
     </form>
 </div>

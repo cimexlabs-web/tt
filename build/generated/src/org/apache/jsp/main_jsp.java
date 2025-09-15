@@ -144,7 +144,7 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    \n");
       out.write("                </div>\n");
       out.write("                <div class=\"vision-image\">\n");
-      out.write("                    <img src=\"Images/vision.jpg\">\n");
+      out.write("                    <img src=\"mainImage?id=7\" alt=\"Table tennis match at NSBM\">\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
