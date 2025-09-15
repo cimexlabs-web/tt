@@ -1,6 +1,7 @@
 package servlet;
 
 import dao.aboutDAO;
+import dao.visionDAO;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
@@ -22,6 +23,8 @@ import java.awt.image.BufferedImage;
 import java.util.Iterator;
 import model.about;
 import model.aboutImg;
+import model.vision;
+import model.visionImg;
 
 @WebServlet(name = "uploadEdit", urlPatterns = {"/uploadEdit"})
 @MultipartConfig(
@@ -77,8 +80,34 @@ public class uploadEdit extends HttpServlet {
             throws ServletException, IOException {
         try {
             String id = request.getParameter("id");
-            aboutDAO ao = new aboutDAO();
+            String year= request.getParameter("year");
+            if(year != null)
+            {
+                    {
+            // Acheiv
+            
+            String title= request.getParameter("titile");
+            Part image= request.getPart("photo");
+            String p1= request.getParameter("point1");
+            String p2= request.getParameter("point2");
+            String p3= request.getParameter("point3");
+            String p4= request.getParameter("point4");
+            String p5= request.getParameter("point5");
+            
+            if (image != null && image.getSize() > 0) {
+                    InputStream imgAch = image.getInputStream();
+                    byte[] compressedImgAchiv = compressImage(imgAch, 1024, 1024, 0.7f); // Resize + compress
+                    
+                    //acheivImg acI= new achevImg(new ByteArrayInputStream(compressedImgAchiv), year);
+                    
 
+            }
+                    }
+            }
+            
+            aboutDAO ao = new aboutDAO();
+            visionDAO vo = new visionDAO();
+            
             // If id is provided → image upload
             if (id != null) {
                 Part img = request.getPart("image" + id);
@@ -87,25 +116,48 @@ public class uploadEdit extends HttpServlet {
                     byte[] compressedImg = compressImage(imgStream, 1024, 1024, 0.7f); // Resize + compress
 
                     aboutImg abI = new aboutImg(new ByteArrayInputStream(compressedImg), id);
-
-                    if (ao.insertImg(abI, id)) {
-                        response.sendRedirect("Edit_about.jsp");
+                    visionImg viI= new visionImg(new ByteArrayInputStream(compressedImg),id);
+                    if("7".equals(id))
+                    {
+                        if (vo.insertImg(viI, id)) {
+                        response.sendRedirect("Edit_vision.jsp");
                         return;
                     }
+                    }
+                    else if(!("7".equals(id)))
+                    {if (ao.insertImg(abI, id)) {
+                        response.sendRedirect("Edit_about.jsp");
+                        return;
+                    }}
+                    
                 }
             }
 
             // If no id → About Us text update
-            String aboutText = request.getParameter("aboutUs");
-            if (aboutText != null && !aboutText.trim().isEmpty()) {
-                about ab = new about(aboutText);
+            
+            String text = request.getParameter("txt");
+            
+            if (text != null ) {
+                about ab = new about(text);
+                vision vi= new vision(text);
+                
+                if("7".equals(id))
+                {
+                    if(vo.insertText(vi))
+                    {
+                        response.sendRedirect("Edit_vision.jsp");
+                    return;
+                    }
+                }
+                else if(!("7".equals(id))){
                 if (ao.insertText(ab)) {
                     response.sendRedirect("Edit_about.jsp");
                     return;
                 }
+                }
             }
 
-            response.getWriter().println("No data received!");
+            response.sendRedirect("tryagain.html");
         } catch (Exception e) {
             response.getWriter().println("Error: " + e.getMessage());
         }
