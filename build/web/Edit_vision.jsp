@@ -112,7 +112,7 @@
 <!-- Vision Text -->
 <div class="edit-section">
     <div class="edit-header"><h1>Edit Vision Text</h1></div>
-    <form action="updateVisionServlet" method="post">
+    <form action="uploadEdit" method="post">
         <textarea name="visionText" placeholder="Write Vision text here..."><%= request.getAttribute("visionText") != null ? request.getAttribute("visionText") : "" %></textarea>
         <div style="text-align:center;">
             <button type="submit" class="submit-btn">Update Text</button>
@@ -128,7 +128,7 @@
         <div class="db-image" style="background-image:url('<%= visionImage %>');"></div>
 
         <!-- Upload New Image -->
-        <form action="uploadVisionServlet" method="post" enctype="multipart/form-data">
+        <form action="uploadEdit" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="1"> <!-- ID for Vision photo -->
             <label for="visionPhotoUpload">
                 <div class="image-placeholder" id="visionPlaceholder">Click or Drag & Drop Image Here</div>
