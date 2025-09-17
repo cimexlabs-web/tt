@@ -24,7 +24,7 @@ public class playerDAO {
     public boolean addPlayer(player p)
     {
         try {
-            String q1= "INSERT INTO player(fname,lname,batch,faculty,sid,gender,phone,school,team,photo) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            String q1= "INSERT INTO player(fname,lname,batch,faculty,sid,gender,phone,school,team,photo,achievement) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             Connection con=DBconnection.createconnection();
             PreparedStatement p1=con.prepareStatement(q1);
             
@@ -38,6 +38,7 @@ public class playerDAO {
             p1.setString(8, p.getScl());
             p1.setString(9, p.getTeam());
             p1.setBinaryStream(10, p.getImg());
+            p1.setString(11, p.getAchiev());
             
             int row = p1.executeUpdate();
             

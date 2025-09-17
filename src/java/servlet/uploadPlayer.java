@@ -90,6 +90,7 @@ public class uploadPlayer extends HttpServlet {
             String gender = request.getParameter("gender");
             String phone = request.getParameter("phone");
             String school = request.getParameter("school");
+            String achiev = request.getParameter("achiev");
             String team = request.getParameter("team");
             
             
@@ -102,7 +103,7 @@ public class uploadPlayer extends HttpServlet {
                 InputStream imgStream = img.getInputStream();
                 compressedImg = compressImage(imgStream, 1024, 1024, 0.7f);
                 
-                player pl=new player(new ByteArrayInputStream(compressedImg),fname,lname,batch,faculty,sid,gender,phone,school,team);
+                player pl=new player(new ByteArrayInputStream(compressedImg),fname,lname,batch,faculty,sid,gender,phone,school,team,achiev);
                 playerDAO p=new playerDAO();
                 
                 if(p.addPlayer(pl))

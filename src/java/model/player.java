@@ -15,10 +15,10 @@ import java.io.InputStream;
 public class player {
     
     private InputStream img;
-    private String fname,lname,batch,faculty,sid,gender,phone,school,team;
+    private String fname,lname,batch,faculty,sid,gender,phone,school,team,achiev;
     
     
-    public player(InputStream img,String fname,String lname,String batch,String faculty,String sid,String gender,String phone,String school,String team)
+    public player(InputStream img,String fname,String lname,String batch,String faculty,String sid,String gender,String phone,String school,String team,String achiev)
     {
         this.img=img;
         this.batch=batch;
@@ -31,6 +31,7 @@ public class player {
         this.school=school;
         this.sid=sid;
         this.team=team;
+        this.achiev=achiev;
     }
     
     public InputStream getImg()
@@ -73,5 +74,9 @@ public class player {
     public String getTeam()
     {
         return team;
+    }
+    public String getAchiev()
+    {
+        return achiev;
     }
 }

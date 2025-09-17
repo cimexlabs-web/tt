@@ -30,6 +30,7 @@
             <th>Gender</th>
             <th>Phone</th>
             <th>School</th>
+            <th>achievement</th>
             
         </tr>
         <%
@@ -44,6 +45,7 @@
     <td data-label="Gender"><%= r.getString("gender") %></td>
     <td data-label="Phone"><%= r.getString("phone") %></td>
     <td data-label="School"><%= r.getString("school") %></td>
+    <td data-label="School"><%= r.getString("achievement") %></td>
     
 </tr>
 

@@ -52,6 +52,11 @@
                 <input type="text" name="school" required>
             </div>
             <div class="form-group">
+                <label>Achievements:</label>
+                <textarea name="achiev"></textarea>
+                
+            </div>
+            <div class="form-group">
                 <label>Team:</label>
                 <select name="team">
                     <option value="boyA">Boys A</option>
