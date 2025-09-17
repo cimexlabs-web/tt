@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/model/visionImg.java</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/uploadEdit.java</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/main.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/Edit_about.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/view_team.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/select_team.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/css/view.css</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/mainImage.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/dao/playerDAO.java</file>
         </group>
     </open-files>
 </project-private>

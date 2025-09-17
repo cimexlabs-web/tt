@@ -32,10 +32,7 @@
                 <i class="fas fa-envelope"></i>
                 <span>View Messages</span>
             </a>
-            <a href="reply_messages.jsp" class="admin-page-btn">
-                <i class="fas fa-reply"></i>
-                <span>Reply to Messages</span>
-            </a>
+            
             
         </div>
         

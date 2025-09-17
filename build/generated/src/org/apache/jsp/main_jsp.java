@@ -138,9 +138,13 @@ public final class main_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"vision-content\">\n");
       out.write("                \n");
       out.write("                <div class=\"vision-text\">\n");
-      out.write("                    <p>To be recognized as one of the leading university sports clubs,\n");
-      out.write("      nurturing talented players while fostering teamwork, discipline, and\n");
-      out.write("      a love for the game of table tennis.</p>\n");
+      out.write("                    <p>");
+String vi= about.about(7);
+                            
+      out.write("\n");
+      out.write("                            ");
+      out.print(vi);
+      out.write("</p>\n");
       out.write("                    \n");
       out.write("                </div>\n");
       out.write("                <div class=\"vision-image\">\n");

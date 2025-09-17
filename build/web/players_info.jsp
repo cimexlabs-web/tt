@@ -32,7 +32,7 @@
                 <i class="fas fa-user-plus"></i>
                 <span>Add New Player</span>
             </a>
-            <a href="view_players.jsp" class="admin-page-btn">
+            <a href="select_team.jsp" class="admin-page-btn">
                 <i class="fas fa-users"></i>
                 <span>View All Players</span>
             </a>

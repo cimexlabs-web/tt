@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="mainCss.css">
-    <title>Players Management</title>
+    <title>Select team</title>
 </head>
 <body class="admin-page-body">
     <%
@@ -23,22 +23,30 @@
     
     <div class="admin-page-container">
         <div class="admin-page-header">
-            <h1>Players Management</h1>
-            <p>Manage player information and profiles</p>
+            <h1>Select Team</h1>
+            
         </div>
         
         <div class="admin-panel-button">
-            <a href="add_player.jsp" class="admin-page-btn">
-                <i class="fas fa-user-plus"></i>
-                <span>Add New Player</span>
+            <a href="view_team.jsp?team=boyA" class="admin-page-btn">
+                <i class="fas fa-people-group"></i>
+                <input type="hidden" name="team" value="boyA">
+                <span>Boys Team A</span>
             </a>
-            <a href="select_team.jsp" class="admin-page-btn">
-                <i class="fas fa-users"></i>
-                <span>View All Players</span>
+            <a href="view_team.jsp?team=boyB" class="admin-page-btn">
+                <i class="fas fa-people-group"></i>
+                <input type="hidden" value="boyB" name="team">
+                <span>Boys Team B</span>
             </a>
-            <a href="edit_players.jsp" class="admin-page-btn">
-                <i class="fas fa-edit"></i>
-                <span>Edit Players</span>
+            <a href="view_team.jsp?team=girlA" class="admin-page-btn">
+                <i class="fas fa-people-group"></i>
+                <input type="hidden" value="girlA" name="team">
+                <span>Girls Team A</span>
+            </a>
+            <a href="view_team.jsp?team=girlB" class="admin-page-btn">
+                <i class="fas fa-people-group"></i>
+                <input type="hidden" value="girlB" name="team">
+                <span>Girls Team B</span>
             </a>
         </div>
         
