@@ -27,6 +27,10 @@
                     <i class="fas fa-edit"></i>
                     <span>Edit Web page</span>
                 </a>
+                <a href="student_request.jsp" class="a-btn">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Student Approval</span>
+                </a>
                 <a href="players_info.jsp" class="a-btn">
                     <i class="fas fa-users"></i>
                     <span>Players</span>

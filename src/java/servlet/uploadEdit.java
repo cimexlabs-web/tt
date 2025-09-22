@@ -138,8 +138,8 @@ public class uploadEdit extends HttpServlet {
             String text = request.getParameter("txt");
             
             if (text != null ) {
-                about ab = new about(text);
-                vision vi= new vision(text);
+                about ab = new about(text.trim());
+                vision vi= new vision(text.trim());
                 
                 if("7".equals(id))
                 {

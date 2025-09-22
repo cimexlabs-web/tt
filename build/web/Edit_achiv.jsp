@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/web_edit.css">
     <title>Edit Achievements</title>
     <style>
         body {

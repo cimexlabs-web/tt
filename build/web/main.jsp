@@ -4,6 +4,7 @@
     Author     : Akila Perera
 --%>
 
+<%@page import="dao.leaderDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="util.DBconnection" %>
@@ -43,7 +44,7 @@
         <div class="hero-content">
             <h1>Welcome To<br>NSBM Table Tennis Club</h1>
             <p>Join our vibrant community of table tennis enthusiasts and experience the thrill of the game!</p>
-            <a href="form.html" class="cta-button large">Join Now</a>
+            <a href="studentForm.jsp" class="cta-button large">Join Now</a>
         </div>
         <div class="hero-image">
             <img  src="mainImage?id=2" alt="Cover">
@@ -166,6 +167,7 @@
         </div>
     </div>
 </section>
+                            <%leaderDAO leader= new leaderDAO();%>
     <section id="messages" class="section">
     <div class="container">
         <h2 class="section-title">Leadership Messages</h2>
@@ -174,44 +176,71 @@
         <div class="messages-container">
             <div class="message-card">
                 <div class="message-photo">
-                    <img src="Images/president.jpg" alt="Club President">
+                    <img src="leaderImage?id=1" alt="Club President">
                     <div class="message-info">
                         <div class="message-role">President</div>
-                        <h3 class="message-name">Miss. Hirushi Rathnayaka</h3>
+                        <h3 class="message-name"><%=leader.title(1)%>. <%=leader.name(1)%></h3>
                     </div>
                 </div>
                 <div class="message-content">
                     <div class="message-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p>It is with great pleasure that I welcome you to the NSBM Table Tennis Club. As president, I've witnessed our club grow from a small group of enthusiasts to a vibrant community of over 200 members. Table tennis is more than just a sport—it's a way to build discipline, friendship, and character.</p>
-                    <p>Our achievements in various tournaments speak volumes about our dedication, but what truly makes me proud is the supportive environment we've created. Whether you're a beginner or an experienced player, you'll find a place here where you can grow and excel.</p>
-                    <p>I encourage each of you to participate actively in our events and training sessions. Together, let's continue to raise the bar of excellence and sportsmanship.</p>
+                    <%
+                            
+                            String msg1= leader.leader(1);
+                            %>
+                            <p> <%=msg1%></p>
                     <div class="message-signature">
                         
-                        <span>Hirushi Rathnayaka</span>
+                        <span><%=leader.name(1)%></span>
                     </div>
                 </div>
             </div>
             
             <div class="message-card">
                 <div class="message-photo">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="MIC">
+                    <img src="leaderImage?id=2" alt="Club President">
                     <div class="message-info">
-                        <div class="message-role">MIC - Table Tennis</div>
-                        <h3 class="message-name">Dr. Anjali Fernando</h3>
+                        <div class="message-role">President</div>
+                        <h3 class="message-name"><%=leader.title(2)%>. <%=leader.name(2)%></h3>
                     </div>
                 </div>
                 <div class="message-content">
                     <div class="message-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p>As the Member-in-Charge of the NSBM Table Tennis Club, I am incredibly proud of the growth and development I've witnessed over the years. This club exemplifies how sports can be a powerful medium for holistic student development.</p>
-                    <p>Our players have not only excelled in competitions but have also demonstrated remarkable teamwork, discipline, and sportsmanship. The club's commitment to maintaining academic balance while pursuing athletic excellence is truly commendable.</p>
-                    <p>I appreciate the efforts of our executive committee and all members who contribute to making this club a thriving community. My door is always open for guidance and support as we continue this journey together.</p>
+                    <%
+                            
+                            String msg2= leader.leader(1);
+                            %>
+                            <p> <%=msg2%></p>
                     <div class="message-signature">
-                        <img src="https://i.ibb.co/3WRLhdn/signature2.png" alt="Signature">
-                        <span>Dr. Anjali Fernando</span>
+                        
+                        <span><%=leader.name(2)%></span>
+                    </div>
+                </div>
+            </div>
+                    <div class="message-card">
+                <div class="message-photo">
+                    <img src="leaderImage?id=3" alt="Club President">
+                    <div class="message-info">
+                        <div class="message-role">President</div>
+                        <h3 class="message-name"><%=leader.title(3)%>. <%=leader.name(3)%></h3>
+                    </div>
+                </div>
+                <div class="message-content">
+                    <div class="message-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <%
+                            
+                            String msg3= leader.leader(3);
+                            %>
+                            <p> <%=msg3%></p>
+                    <div class="message-signature">
+                        
+                        <span><%=leader.name(3)%></span>
                     </div>
                 </div>
             </div>
@@ -222,7 +251,7 @@
         <div class="container">
             <h2>Ready to Join?</h2>
             <p>Become a part of our growing table tennis community</p>
-            <a href="form.html" class="cta-button large">Join Now</a>
+            <a href="studentForm.jsp" class="cta-button large">Join Now</a>
         </div>
     </section>
 
@@ -251,7 +280,7 @@
                 </div>
                 <div class="contact-form">
                     <h3>Send us a Message</h3>
-                    <form action="message" method="post" name="msg">
+                    <form action="send_message" method="post" name="msg">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" name="name" placeholder="Enter your name" required>

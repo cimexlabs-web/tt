@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/web_edit.css">
-    <title>Edit About</title>
+    <title>Edit Leaders</title>
     
 </head>
 <body>
@@ -16,48 +16,65 @@
     }
 
     Map<Integer,String> images = new HashMap<>();
-    for(int i=1;i<=6;i++){
+    for(int i=1;i<=3;i++){
         images.put(i, "fetchImageServlet?id="+i);
     }
 %>
 
 <a href="javascript:history.back()" class="back-btn">← Back</a>
 
-<!-- All Image Uploads -->
-<%
-    String[] labels = {"LOGO","Cover Photo","Photo 1","Photo 2","Photo 3","Photo 4"};
-    for(int i=0;i<6;i++){
-%>
+
+<% String[] labels = {"President","MIC","MIC"}; %>
+<% for(int i=1;i<=3;i++){ %>
 <div class="edit-about">
-    <div class="edit-header"><h1>Change <%=labels[i]%></h1></div>
+    <div class="edit-header">
+        <h1>Edit <%= labels[i-1] %></h1>
+    </div>
+
     <div class="image-wrapper">
         <div class="db-image">
-            <img src="mainImage?id=<%=i+1%>" alt="<%=labels[i]%>">
+            <img src="leaderImage?id=<%=i%>" alt="<%=labels[i-1]%>">
         </div>
-        <form action="uploadEdit" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<%=i+1%>">
+
+        <!-- ONE form for image + name + message -->
+        <form action="uploadLeader" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%=i%>">
+
+            <!-- Image -->
             <label for="imageUpload<%=i%>">
                 <div class="image-placeholder" id="placeholder<%=i%>">
                     Click or Drag & Drop Image Here
                 </div>
             </label>
-            <input type="file" name="image<%=i+1%>" id="imageUpload<%=i%>" accept="image/*" onchange="previewImage(event,<%=i%>)" required>
-            <button type="submit" class="submit-btn">Submit</button>
+            <input type="file" name="image<%=i%>" id="imageUpload<%=i%>" accept="image/*" onchange="previewImage(event,<%=i%>)">
+            <br><br><br>
+            <!-- Title/Name -->
+            <label for="title<%=i%>">Title:</label>
+            <select name="title" id="title<%=i%>">
+                <option value="">-Select title-</option>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+            </select>
+                <br><br>
+            <label for="name<%=i%>">Name:</label>
+            <input type="text" name="name" id="name<%=i%>" placeholder="Leader Name" 
+                   value="<%= request.getAttribute("leaderName"+i) != null ? request.getAttribute("leaderName"+i) : "" %>" required>
+
+            <!-- Message -->
+            <br><br><br>
+            <textarea name="txt" placeholder="Write message here..."><%= request.getAttribute("aboutText"+i) != null ? request.getAttribute("aboutText"+i) : "" %></textarea>
+
+            <button type="submit" class="submit-btn">Update</button>
         </form>
     </div>
 </div>
 <% } %>
 
-<!-- About Us Text -->
-<div class="edit-about">
-    <div class="edit-header"><h1>Edit About Us Text</h1></div>
-    <form action="uploadEdit" method="post">
-        <textarea name="txt" placeholder="Write About Us here..." required>
-            <%= request.getAttribute("aboutText") != null ? request.getAttribute("aboutText") : "" %>
-        </textarea>
-        <button type="submit" class="submit-btn">Update Text</button>
-    </form>
-</div>
+
+
+
+
 
 <script>
 function previewImage(event,index){

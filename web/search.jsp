@@ -90,7 +90,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td><img src="searchImage?id=<%=id%>" alt="Player Photo" style="width:100px; height:100px;"></td>
+                <td><img src="searchImage?id=<%=sid%>" alt="Player Photo" style="width:100px; height:100px;"></td>
                 <td>
                     <input type="file" name="photo" accept="image/*">
                     <button type="submit" name="field" value="photo">Update</button>
