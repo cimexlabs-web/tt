@@ -1,12 +1,12 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Table Tennis Registration</title>
     
-    <script src="Script/studentForm.js" defer></script>
+    
     <link rel="stylesheet" href="css/studentForm.css">
     
 </head>
@@ -14,7 +14,7 @@
     <div class="form-container">
         <img class="logo" src="mainImage?id=1" alt="Logo">
         <h2>Table Tennis Registration Form</h2>
-        <form action="submit" method="post">
+        <form action="submit" method="post" >
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -42,19 +42,19 @@
             <input type="text" id="whatsapp" name="whatsapp" required>
 
             <label>Do you have Table Tennis experience?</label>
-            <select id="experience" name="experience" onchange="toggleExperienceFields()" required>
+            <select id="experience" name="experience"  required>
                 <option value="">--Select Option--</option>
                 <option value="No">No</option>
                 <option value="Yes">Yes</option>
             </select>
-
-            <div id="experienceFields" class="hidden">
+            <label style=" text-align: center; color: red">If you have experience, please fill below </label>
+            
                 <label for="yearStarted">Year Started Playing:</label>
-                <input type="number" id="yearStarted" name="yearStarted" placeholder="e.g. 2018">
+                <input type="text" id="yearStarted" name="yearStarted" placeholder="e.g. 2018">
 
                 <label for="achievements">Achievements:</label>
                 <textarea id="achievements" name="achievements" placeholder="List your achievements"></textarea>
-            </div>
+            
 
             <button type="submit">Submit</button>
         </form>

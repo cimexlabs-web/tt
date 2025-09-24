@@ -22,19 +22,23 @@
                 <p>Welcome, <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Admin" %></p>
             </div>
             
+            
             <div class="panel-button">
-                <a href="edit.jsp" class="a-btn">
-                    <i class="fas fa-edit"></i>
-                    <span>Edit Web page</span>
-                </a>
+                
                 <a href="student_request.jsp" class="a-btn">
                     <i class="fas fa-user-plus"></i>
                     <span>Student Approval</span>
                 </a>
+                <a href="edit.jsp" class="a-btn">
+                    <i class="fas fa-edit"></i>
+                    <span>Edit Web page</span>
+                </a>
+                
                 <a href="players_info.jsp" class="a-btn">
                     <i class="fas fa-users"></i>
                     <span>Players</span>
                 </a>
+                
                 <a href="message.jsp" class="a-btn">
                     <i class="fas fa-envelope"></i>
                     <span>Web messages</span>

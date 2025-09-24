@@ -23,6 +23,10 @@
             </div>
             
             <div class="panel-button">
+                <a href="student_request.jsp" class="a-btn">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Student Approval</span>
+                </a>
                 <a href="edit.jsp" class="a-btn">
                     <i class="fas fa-edit"></i>
                     <span>Edit Web page</span>

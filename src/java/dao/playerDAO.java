@@ -87,4 +87,23 @@ public class playerDAO {
         return rs;
     }
     
+    public ResultSet getRequestDetail()
+    {
+        ResultSet rs = null;
+        try {
+            String q2="SELECT * FROM student";
+            Connection con1=DBconnection.createconnection();
+            PreparedStatement p2=con1.prepareStatement(q2);
+            
+            rs= p2.executeQuery();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(playerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return rs;
+    }
+    
+    
 }

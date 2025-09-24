@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.submit_student;
+import model.student;
 
 /**
  *
@@ -74,31 +74,42 @@ public class submit extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //processRequest(request, response);
         
-        String name= request.getParameter("name");
-        String batch= request.getParameter("batch");
-        String degree= request.getParameter("degree");
-        String faculty= request.getParameter("faculty");
-        String sid= request.getParameter("studentId");
-        String gender= request.getParameter("gender");
-        String phone= request.getParameter("whatsapp");
-        String exp= request.getParameter("experience");
-        String year= request.getParameter("yearStarted");
-        String achi= request.getParameter("achievements");
+        request.setCharacterEncoding("UTF-8"); // allow Unicode
+    
+    String name     = request.getParameter("name");
+    String batch    = request.getParameter("batch");
+    String degree   = request.getParameter("degree");
+    String faculty  = request.getParameter("faculty");
+    String sid      = request.getParameter("studentId"); // matches HTML
+    String gender   = request.getParameter("gender");
+    String phone    = request.getParameter("whatsapp");  // matches HTML
+    String exp      = request.getParameter("experience");
+    String year     = request.getParameter("yearStarted");
+    String achi     = request.getParameter("achievements");
+
+    
+    student student = new student(
+        name,batch,degree,faculty,sid,gender,phone,exp,year,achi
+    );
+
+    
+    submitDAO dao = new submitDAO();
+
+    try {
         
-        submit_student s= new submit_student(name,batch,degree,faculty,sid,gender,phone,exp,year,achi);
-        submitDAO so= new submitDAO();
-        
-        if (so.addStudent(s))
-        {
+        if (dao.addStudent(student)) {
+            
             response.sendRedirect("Successfully_submit.html");
-        }
-        else
-        {
+        } else {
+            
             response.sendRedirect("try_again.html");
         }
-        
-        
+    } catch (Exception e) {
+        e.printStackTrace();
+        response.sendRedirect("try_again.html"); // fallback
+    }
     }
 
     /**
