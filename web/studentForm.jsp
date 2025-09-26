@@ -40,6 +40,9 @@
 
             <label for="whatsapp">WhatsApp Number:</label>
             <input type="text" id="whatsapp" name="whatsapp" required>
+            
+            <label for="mail">Student Mail:</label>
+            <input type="text" id="mail" name="mail" required>
 
             <label>Do you have Table Tennis experience?</label>
             <select id="experience" name="experience"  required>

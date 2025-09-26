@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import dao.submitDAO;
+import dao.deleteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.student;
+import model.delete_student;
 
 /**
  *
  * @author Akila Perera
  */
-@WebServlet(name = "submit", urlPatterns = {"/submit"})
-public class submit extends HttpServlet {
+@WebServlet(name = "Approve", urlPatterns = {"/Approve"})
+public class Approve extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class submit extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet submit</title>");            
+            out.println("<title>Servlet Approve</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet submit at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Approve at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,8 +60,38 @@ public class submit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        //processRequest(request, response);
+        
+        String id= request.getParameter("id");
+        String status= request.getParameter("status");
+        String team= request.getParameter("team");
+        String mail= request.getParameter("mail");
+        
+        try {
+        if ("approved".equalsIgnoreCase(status)) {
+            String subject = "Table Tennis Registration Approved";
+            String msg = "Dear Student,\n\n" +
+                         "Congratulations! Your Table Tennis registration has been approved.\n" +
+                         "Assigned Team: " + team + "\n\n" +
+                         "Best regards,\nSports Committee";
+
+            util.MailSender.sendMail(mail, subject, msg);
+        }
+
+        delete_student delete=new delete_student(id);
+        
+        deleteDAO d=new deleteDAO();
+        
+        if(d.deleteStudent(delete))
+        {
+            response.sendRedirect("student_request.jsp");
+        }
+        
+            } catch (Exception e) {
+        e.printStackTrace();
+        response.sendRedirect("student_request.jsp?msg=error");
+             }
+        }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -74,43 +104,7 @@ public class submit extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        
-        request.setCharacterEncoding("UTF-8"); // allow Unicode
-    
-    String name     = request.getParameter("name");
-    String batch    = request.getParameter("batch");
-    String degree   = request.getParameter("degree");
-    String faculty  = request.getParameter("faculty");
-    String sid      = request.getParameter("studentId"); // matches HTML
-    String gender   = request.getParameter("gender");
-    String phone    = request.getParameter("whatsapp");  // matches HTML
-    String mail    = request.getParameter("mail");
-    String exp      = request.getParameter("experience");
-    String year     = request.getParameter("yearStarted");
-    String achi     = request.getParameter("achievements");
-
-    
-    student student = new student(
-        name,batch,degree,faculty,sid,gender,phone,mail,exp,year,achi
-    );
-
-    
-    submitDAO dao = new submitDAO();
-
-    try {
-        
-        if (dao.addStudent(student)) {
-            
-            response.sendRedirect("Successfully_submit.html");
-        } else {
-            
-            response.sendRedirect("try_again.html");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        response.sendRedirect("try_again.html"); // fallback
-    }
+        processRequest(request, response);
     }
 
     /**

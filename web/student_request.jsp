@@ -24,34 +24,36 @@
                 String id = r.getString("id");
         %>
         <div class="card">
-            <h2><%= r.getString("name") %></h2>
-            <p><strong>ID:</strong> <%= id %></p>
-            <p><strong>Batch:</strong> <%= r.getString("batch") %></p>
-            <p><strong>Degree:</strong> <%= r.getString("degree") %></p>
-            <p><strong>Faculty:</strong> <%= r.getString("faculty") %></p>
-            <p><strong>Student ID:</strong> <%= r.getString("sid") %></p>
-            <p><strong>Gender:</strong> <%= r.getString("gender") %></p>
-            <p><strong>Phone:</strong> <%= r.getString("phone") %></p>
-            <p><strong>Phone:</strong> <%= r.getString("Student_Mail") %></p>
-            <p><strong>Experience:</strong> <%= r.getString("experience") %></p>
-            <p><strong>Start Day:</strong> <%= r.getString("start_date") %></p>
-            <p><strong>Achievement:</strong> <%= r.getString("achievement") %></p>
+    <h2><%= r.getString("name") %></h2>
+    <div class="card-details">
+        <div class="detail"><span>ID:</span> <%= r.getString("id") %></div>
+        <div class="detail"><span>Batch:</span> <%= r.getString("batch") %></div>
+        <div class="detail"><span>Degree:</span> <%= r.getString("degree") %></div>
+        <div class="detail"><span>Faculty:</span> <%= r.getString("faculty") %></div>
+        <div class="detail"><span>Student ID:</span> <%= r.getString("sid") %></div>
+        <div class="detail"><span>Gender:</span> <%= r.getString("gender") %></div>
+        <div class="detail"><span>Phone:</span> <%= r.getString("phone") %></div>
+        <div class="detail"><span>Email:</span> <%= r.getString("mail") %></div>
+        <div class="detail"><span>Experience:</span> <%= r.getString("experience") %></div>
+        <div class="detail"><span>Start Day:</span> <%= r.getString("start_date") %></div>
+        <div class="detail"><span>Achievement:</span> <%= r.getString("achievement") %></div>
+    </div>
 
-            <!-- Team Selection -->
-            <label for="team-<%= id %>">Assign Team:</label>
-            <select id="team-<%= id %>" class="team-select">
-                <option value="">-- Select Team --</option>
-                <option value="Team A">Team A</option>
-                <option value="Team B">Team B</option>
-                <option value="Team C">Team C</option>
-            </select>
+    <label for="team-<%= id %>">Assign Team:</label>
+    <select name="team" id="team-<%= id %>" class="team-select" required>
+        <option value="">-- Select Team --</option>
+        <option value="Team A">Boys Team A</option>
+        <option value="Team B">Boys Team B</option>
+        <option value="Team C">Girls Team A</option>
+        <option value="Team D">Girls Team B</option>
+    </select>
 
-            <!-- Action Links -->
-            <div class="btn-group">
-                <a href="ApproveServlet?id=<%= id %>&status=approved" class="btn approve">Approve</a>
-                <a href="ApproveServlet?id=<%= id %>&status=rejected" class="btn reject">Not Approve</a>
-            </div>
-        </div>
+    <div class="btn-group">
+        <a href="Approve?id=<%= id %>&status=approved&mail=<%= r.getString("mail")%>" class="btn approve">Approve</a>
+        <a href="Approve?id=<%= id %>&status=rejected" class="btn reject">Not Approve</a>
+    </div>
+</div>
+
         <%
             }
         %>

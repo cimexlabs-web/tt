@@ -36,7 +36,7 @@ public class submitDAO {
             
             
             
-            String query = "INSERT INTO student (name, batch, degree, faculty, sid, gender, phone, experience, start_date, achievement) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO student (name, batch, degree, faculty, sid, gender, phone, mail, experience, start_date, achievement) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             
             PreparedStatement ps = con.prepareStatement(query);
@@ -47,9 +47,10 @@ public class submitDAO {
             ps.setString(5, student.getSid());
             ps.setString(6, student.getGender());
             ps.setString(7, student.getPhone());
-            ps.setString(8, student.getExp());
-            ps.setString(9, student.getYearStarted());
-            ps.setString(10, student.getAchievements());
+            ps.setString(8, student.getMail());
+            ps.setString(9, student.getExp());
+            ps.setString(10, student.getYearStarted());
+            ps.setString(11, student.getAchievements());
             
             int row= ps.executeUpdate();
             
