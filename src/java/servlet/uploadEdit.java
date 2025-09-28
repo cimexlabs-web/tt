@@ -100,7 +100,6 @@ public class uploadEdit extends HttpServlet {
                     
                     //acheivImg acI= new achevImg(new ByteArrayInputStream(compressedImgAchiv), year);
                     
-
             }
                     }
             }

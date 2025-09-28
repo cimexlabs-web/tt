@@ -86,7 +86,10 @@ public final class studentForm_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            \r\n");
       out.write("            <label for=\"mail\">Student Mail:</label>\r\n");
       out.write("            <input type=\"text\" id=\"mail\" name=\"mail\" required>\r\n");
-      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            <label for=\"school\">School:</label>\r\n");
+      out.write("            <input type=\"text\" id=\"school\" name=\"school\" required>\r\n");
+      out.write("            \r\n");
       out.write("            <label>Do you have Table Tennis experience?</label>\r\n");
       out.write("            <select id=\"experience\" name=\"experience\"  required>\r\n");
       out.write("                <option value=\"\">--Select Option--</option>\r\n");

@@ -43,7 +43,10 @@
             
             <label for="mail">Student Mail:</label>
             <input type="text" id="mail" name="mail" required>
-
+            
+            <label for="school">School:</label>
+            <input type="text" id="school" name="school" required>
+            
             <label>Do you have Table Tennis experience?</label>
             <select id="experience" name="experience"  required>
                 <option value="">--Select Option--</option>
@@ -60,6 +63,7 @@
             
 
             <button type="submit">Submit</button>
+            
         </form>
     </div>
 </body>

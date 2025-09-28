@@ -24,17 +24,18 @@ public class playerDAO {
     public boolean addPlayer(player p)
     {
         try {
-            String q1= "INSERT INTO player(fname,lname,batch,faculty,sid,gender,phone,school,team,photo,achievement) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            String q1= "INSERT INTO player(name,batch,faculty,sid,gender,phone,mail,school,team,photo,achievement) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             Connection con=DBconnection.createconnection();
             PreparedStatement p1=con.prepareStatement(q1);
             
             p1.setString(1, p.getFname());
-            p1.setString(2, p.getLname());
-            p1.setString(3, p.getBatch());
-            p1.setString(4, p.getFaculty());
-            p1.setString(5, p.getSid());
-            p1.setString(6, p.getGender());
-            p1.setString(7, p.getPhone());
+            
+            p1.setString(2, p.getBatch());
+            p1.setString(3, p.getFaculty());
+            p1.setString(4, p.getSid());
+            p1.setString(5, p.getGender());
+            p1.setString(6, p.getPhone());
+            p1.setString(7, p.getMail());
             p1.setString(8, p.getScl());
             p1.setString(9, p.getTeam());
             p1.setBinaryStream(10, p.getImg());
@@ -103,6 +104,37 @@ public class playerDAO {
             
         }
         return rs;
+    }
+    
+    public boolean addPlayer2(player p)
+    {
+        try {
+            String q1= "INSERT INTO player(name,batch,faculty,sid,gender,phone,mail,school,team,achievement) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            Connection con3=DBconnection.createconnection();
+            PreparedStatement p1=con3.prepareStatement(q1);
+            
+            p1.setString(1, p.getFname());
+            
+            p1.setString(2, p.getBatch());
+            p1.setString(3, p.getFaculty());
+            p1.setString(4, p.getSid());
+            p1.setString(5, p.getGender());
+            p1.setString(6, p.getPhone());
+            p1.setString(7, p.getMail());
+            p1.setString(8, p.getScl());
+            p1.setString(9, p.getTeam());
+            
+            p1.setString(10, p.getAchiev());
+            
+            int row = p1.executeUpdate();
+            
+            return row >0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(playerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
     }
     
     

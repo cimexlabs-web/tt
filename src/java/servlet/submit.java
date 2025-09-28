@@ -86,13 +86,14 @@ public class submit extends HttpServlet {
     String gender   = request.getParameter("gender");
     String phone    = request.getParameter("whatsapp");  // matches HTML
     String mail    = request.getParameter("mail");
+    String scl     = request.getParameter("school");
     String exp      = request.getParameter("experience");
     String year     = request.getParameter("yearStarted");
     String achi     = request.getParameter("achievements");
 
     
     student student = new student(
-        name,batch,degree,faculty,sid,gender,phone,mail,exp,year,achi
+        name,batch,degree,faculty,sid,gender,phone,mail,scl,exp,year,achi
     );
 
     

@@ -18,20 +18,13 @@
         <table>
             <tr>
                 <th>First Name</th>
-                <td><%= r.getString("fname") %></td>
+                <td><%= r.getString("name") %></td>
                 <td>
                     <input type="text" name="fname" placeholder="New First Name">
                     <button type="submit" name="field" value="fname">Update</button>
                 </td>
             </tr>
-            <tr>
-                <th>Last Name</th>
-                <td><%= r.getString("lname") %></td>
-                <td>
-                    <input type="text" name="lname" placeholder="New Last Name">
-                    <button type="submit" name="field" value="lname">Update</button>
-                </td>
-            </tr>
+            
             <tr>
                 <th>Batch</th>
                 <td><%= r.getString("batch") %></td>
@@ -70,6 +63,14 @@
                 <td>
                     <input type="text" name="phone" placeholder="New Phone">
                     <button type="submit" name="field" value="phone">Update</button>
+                </td>
+            </tr>
+            <tr>
+                <th>Student Mail</th>
+                <td><%= r.getString("mail") %></td>
+                <td>
+                    <input type="text" name="mail" placeholder="New Last Name">
+                    <button type="submit" name="field" value="lname">Update</button>
                 </td>
             </tr>
             <tr>

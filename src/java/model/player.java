@@ -15,10 +15,10 @@ import java.io.InputStream;
 public class player {
     
     private InputStream img;
-    private String fname,lname,batch,faculty,sid,gender,phone,school,team,achiev;
+    private String fname,batch,faculty,sid,gender,phone,mail,school,team,achiev;
     
     
-    public player(InputStream img,String fname,String lname,String batch,String faculty,String sid,String gender,String phone,String school,String team,String achiev)
+    public player(InputStream img,String fname,String batch,String faculty,String sid,String gender,String phone,String mail,String school,String team,String achiev)
     {
         this.img=img;
         this.batch=batch;
@@ -26,13 +26,31 @@ public class player {
         this.fname=fname;
         this.gender=gender;
         
-        this.lname=lname;
+        this.mail=mail;
         this.phone=phone;
         this.school=school;
         this.sid=sid;
         this.team=team;
         this.achiev=achiev;
     }
+    
+    
+    public player(String fname,String batch,String faculty,String sid,String gender,String phone,String mail,String school,String team,String achiev)
+    {
+        
+        this.batch=batch;
+        this.faculty=faculty;
+        this.fname=fname;
+        this.gender=gender;
+        
+        this.mail=mail;
+        this.phone=phone;
+        this.school=school;
+        this.sid=sid;
+        this.team=team;
+        this.achiev=achiev;
+    }
+    
     
     public InputStream getImg()
     {
@@ -42,6 +60,10 @@ public class player {
     public String getBatch()
     {
         return batch;
+    }
+    public String getMail()
+    {
+        return mail;
     }
     public String getFaculty()
     {
@@ -59,10 +81,7 @@ public class player {
     {
         return sid;
     }
-    public String getLname()
-    {
-        return lname;
-    }
+    
     public String getPhone()
     {
         return phone;

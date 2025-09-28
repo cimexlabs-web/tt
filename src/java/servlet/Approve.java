@@ -6,7 +6,9 @@
 package servlet;
 
 import dao.deleteDAO;
+import dao.playerDAO;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.delete_student;
+import model.player;
 
 /**
  *
@@ -68,12 +71,43 @@ public class Approve extends HttpServlet {
         String mail= request.getParameter("mail");
         String studentName= request.getParameter("name");
         
+        String batch = request.getParameter("batch");
+            String faculty = request.getParameter("faculty");
+            String sid = request.getParameter("sid");
+            String gender = request.getParameter("gender");
+            String phone = request.getParameter("phone");
+            
+            String school = request.getParameter("school");
+            String achiev = null;
+            achiev=request.getParameter("achievement");
+        
+                
+        String t=null;
+        if ("boyA".equals(team))
+        {
+            t="Boys A Team";
+        }
+        else if("boyB".equals(team))
+        {
+            t="Boys B Team";
+        }
+        else if("girlA".equals(team))
+        {
+            t="Girls A Team";
+        }
+        else if("girlB".equals(team))
+        {
+            t="Girls B Team";
+        }
+        
+        
+        
         try {
         if ("approved".equalsIgnoreCase(status) && !("reject").equals(status)) {
             String subject = "Table Tennis Registration Approved";
             String msg = "Dear " + studentName + ",\n\n" +
              "Congratulations! Your registration for the University Table Tennis Club has been approved.\n" +
-             "You have been assigned to Team: " + team + ".\n\n" +
+             "You have been assigned to Team: " + t + ".\n\n" +
              "We have also created an official WhatsApp group where you’ll receive updates about announcements, matches, practices, and other events. Please join using the link below:\n" +
              //whatsappLink + "\n\n" +
              "Welcome to our club! We look forward to seeing your active participation.\n\n" +
@@ -81,9 +115,19 @@ public class Approve extends HttpServlet {
              "President,\n" +
              "HIrushi Rathnayaka,\n" +
              "Table Tennis Club,\n" +
-             "NSBM Green Univesity"      ;
-
-            util.MailSender.sendMail(mail, subject, msg);
+             "NSBM Green University"      ;
+            
+            playerDAO p=new playerDAO();
+            
+            player pl=new player(studentName,batch,faculty,sid,gender,phone,mail,school,team,achiev);
+            
+            if(p.addPlayer2(pl))
+            {
+                util.MailSender.sendMail(mail.trim(), subject, msg);
+            }
+            
+            
+            
         }
 
         delete_student delete=new delete_student(id);

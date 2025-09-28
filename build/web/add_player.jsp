@@ -13,13 +13,10 @@
         <form action="uploadPlayer" method="post" enctype="multipart/form-data">
             
             <div class="form-group">
-                <label>First Name:</label>
+                <label>Full Name:</label>
                 <input type="text" name="fname" required>
             </div>
-            <div class="form-group">
-                <label>Last Name:</label>
-                <input type="text" name="lname" required>
-            </div>
+            
             <div class="form-group">
                 <label>Batch:</label>
                 <input type="text" name="batch" placeholder="EX: 22.1" required>
@@ -46,6 +43,10 @@
             <div class="form-group">
                 <label>Phone:</label>
                 <input type="text" name="phone" placeholder="EX: 0701231231" required>
+            </div>
+            <div class="form-group">
+                <label>Student Mail:</label>
+                <input type="text" name="mail"  required>
             </div>
             <div class="form-group">
                 <label>School:</label>

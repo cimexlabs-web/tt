@@ -15,13 +15,14 @@ public class student {
     private String gender;
     private String phone;
     private String mail;
+    private String scl;
     private String exp;
     private String yearStarted;
     private String achievements;
     
     
     public student(String name, String batch, String degree, String faculty,
-                         String sid, String gender, String phone,String mail, String exp,
+                         String sid, String gender, String phone,String mail,String scl, String exp,
                          String yearStarted, String achievements) {
         this.name = name;
         this.batch = batch;
@@ -31,6 +32,7 @@ public class student {
         this.gender = gender;
         this.phone = phone;
         this.mail=mail;
+        this.scl=scl;
         this.exp = exp;
         this.yearStarted = yearStarted;
         this.achievements = achievements;
@@ -66,6 +68,9 @@ public class student {
     }
     public String getMail() {
         return mail;
+    }
+    public String getScl() {
+        return scl;
     }
 
     public String getExp() {

@@ -22,13 +22,14 @@
     
     <table border="1" cellpadding="5" cellspacing="0">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Full Name</th>
+            
             <th>Batch</th>
             <th>Faculty</th>
             <th>Student ID</th>
             <th>Gender</th>
             <th>Phone</th>
+            <th>Mail</th>
             <th>School</th>
             <th>achievement</th>
             
@@ -37,13 +38,14 @@
             while(r.next()) {
         %>
         <tr>
-    <td data-label="First Name"><%= r.getString("fname") %></td>
-    <td data-label="Last Name"><%= r.getString("lname") %></td>
+    <td data-label="First Name"><%= r.getString("name") %></td>
+    
     <td data-label="Batch"><%= r.getString("batch") %></td>
     <td data-label="Faculty"><%= r.getString("faculty") %></td>
     <td data-label="Student ID"><%= r.getString("sid") %></td>
     <td data-label="Gender"><%= r.getString("gender") %></td>
     <td data-label="Phone"><%= r.getString("phone") %></td>
+    <td data-label="Last Name"><%= r.getString("mail") %></td>
     <td data-label="School"><%= r.getString("school") %></td>
     <td data-label="School"><%= r.getString("achievement") %></td>
     

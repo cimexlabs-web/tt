@@ -83,12 +83,13 @@ public class uploadPlayer extends HttpServlet {
             // Collect form fields
             String id = request.getParameter("id");
             String fname = request.getParameter("fname");
-            String lname = request.getParameter("lname");
+            
             String batch = request.getParameter("batch");
             String faculty = request.getParameter("faculty");
             String sid = request.getParameter("sid");
             String gender = request.getParameter("gender");
             String phone = request.getParameter("phone");
+            String mail= request.getParameter("mail");
             String school = request.getParameter("school");
             String achiev = request.getParameter("achiev");
             String team = request.getParameter("team");
@@ -103,7 +104,7 @@ public class uploadPlayer extends HttpServlet {
                 InputStream imgStream = img.getInputStream();
                 compressedImg = compressImage(imgStream, 1024, 1024, 0.7f);
                 
-                player pl=new player(new ByteArrayInputStream(compressedImg),fname,lname,batch,faculty,sid,gender,phone,school,team,achiev);
+                player pl=new player(new ByteArrayInputStream(compressedImg),fname,batch,faculty,sid,gender,phone,mail,school,team,achiev);
                 playerDAO p=new playerDAO();
                 
                 if(p.addPlayer(pl))
