@@ -10,22 +10,40 @@ package model;
  * @author Akila Perera
  */
 public class user {
-    private String user;
+    private String name;
+    private String username;
+    private String mail;
     private String pws;
+    private String type;
     
-    public user (String user,String pws)
+    public user (String name,String username, String mail, String pws, String type)
     {
-        this.user=user;
+        this.name=name;
+        this.username=username;
+        this.mail=mail;
         this.pws=pws;
+        this.type=type;
     }
     
-    public String getusername()
+    public String getName()
     {
-        return user;
+        return name;
     }
     
     public String getpassword()
     {
         return pws;
+    }
+    public String getUsername()
+    {
+        return username;
+    }
+    public String getMail()
+    {
+        return mail;
+    }
+    public String getType()
+    {
+        return type;
     }
 }

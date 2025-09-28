@@ -7,13 +7,14 @@
             <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/submit.java</file>
             <file>file:/D:/Projects/New%20folder%20(2)/tt/web/student_request.jsp</file>
             <file>file:/D:/Projects/New%20folder%20(2)/tt/web/SAdmin.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/studentForm.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/index.html</file>
             <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/model/student.java</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/css/card_request.css</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/NAdmin.jsp</file>
             <file>file:/D:/Projects/New%20folder%20(2)/tt/web/main.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/select_team.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/NAdmin.jsp</file>
             <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/dao/playerDAO.java</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/dao/submitDAO.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/select_team.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/Approve.java</file>
         </group>
     </open-files>
 </project-private>

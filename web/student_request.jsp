@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/card_request.css">
+    <link rel="stylesheet" href="css/student_req.css">
     <title>QR Requests</title>
 </head>
 <body>
@@ -24,36 +24,49 @@
                 String id = r.getString("id");
         %>
         <div class="card">
-    <h2><%= r.getString("name") %></h2>
-    <div class="card-details">
-        <div class="detail"><span>ID:</span> <%= r.getString("id") %></div>
-        <div class="detail"><span>Batch:</span> <%= r.getString("batch") %></div>
-        <div class="detail"><span>Degree:</span> <%= r.getString("degree") %></div>
-        <div class="detail"><span>Faculty:</span> <%= r.getString("faculty") %></div>
-        <div class="detail"><span>Student ID:</span> <%= r.getString("sid") %></div>
-        <div class="detail"><span>Gender:</span> <%= r.getString("gender") %></div>
-        <div class="detail"><span>Phone:</span> <%= r.getString("phone") %></div>
-        <div class="detail"><span>Email:</span> <%= r.getString("mail") %></div>
-        <div class="detail"><span>Experience:</span> <%= r.getString("experience") %></div>
-        <div class="detail"><span>Start Day:</span> <%= r.getString("start_date") %></div>
-        <div class="detail"><span>Achievement:</span> <%= r.getString("achievement") %></div>
-    </div>
+            <h2><%= r.getString("name") %></h2>
+            <div class="card-details">
+                <div class="detail"><span>ID:</span> <%= r.getString("id") %></div>
+                <div class="detail"><span>Batch:</span> <%= r.getString("batch") %></div>
+                <div class="detail"><span>Degree:</span> <%= r.getString("degree") %></div>
+                <div class="detail"><span>Faculty:</span> <%= r.getString("faculty") %></div>
+                <div class="detail"><span>Student ID:</span> <%= r.getString("sid") %></div>
+                <div class="detail"><span>Gender:</span> <%= r.getString("gender") %></div>
+                <div class="detail"><span>Phone:</span> <%= r.getString("phone") %></div>
+                <div class="detail"><span>Email:</span> <%= r.getString("mail") %></div>
+                <div class="detail"><span>Experience:</span> <%= r.getString("experience") %></div>
+                <div class="detail"><span>Start Day:</span> <%= r.getString("start_date") %></div>
+                <div class="detail"><span>Achievement:</span> <%= r.getString("achievement") %></div>
+            </div>
 
-    <label for="team-<%= id %>">Assign Team:</label>
-    <select name="team" id="team-<%= id %>" class="team-select" required>
-        <option value="">-- Select Team --</option>
-        <option value="Team A">Boys Team A</option>
-        <option value="Team B">Boys Team B</option>
-        <option value="Team C">Girls Team A</option>
-        <option value="Team D">Girls Team B</option>
-    </select>
+            <!-- Action buttons -->
+            <div class="btn-group">
+                <form action="Approve" method="get" style="flex:1;">
+                    <!-- hidden fields -->
+                    <input type="hidden" name="id" value="<%= id %>">
+                    <input type="hidden" name="mail" value="<%= r.getString("mail") %>">
+                    <input type="hidden" name="name" value="<%= r.getString("name") %>">
 
-    <div class="btn-group">
-        <a href="Approve?id=<%= id %>&status=approved&mail=<%= r.getString("mail")%>" class="btn approve">Approve</a>
-        <a href="Approve?id=<%= id %>&status=rejected" class="btn reject">Not Approve</a>
-    </div>
-</div>
+                    <!-- team select -->
+                    <select name="team" id="team-<%= id %>" class="team-select" required>
+                        <option value="">-- Select Team --</option>
+                        <option value="Boys Team A">Boys Team A</option>
+                        <option value="Boys Team B">Boys Team B</option>
+                        <option value="Girls Team A">Girls Team A</option>
+                        <option value="Girls Team B">Girls Team B</option>
+                        <option value="reject">reject</option>
+                    </select>
 
+                    <button type="submit" name="status" value="approved" class="btn approve">
+                        Approve
+                    </button>
+                </form>
+
+                <a href="Approve?id=<%= id %>&status=rejected" class="btn reject">
+                    Not Approve
+                </a>
+            </div>
+        </div>
         <%
             }
         %>

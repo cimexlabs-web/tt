@@ -1,0 +1,16 @@
+SMAP
+admin_005fchange_jsp.java
+JSP
+*S JSP
+*F
++ 0 admin_change.jsp
+admin_change.jsp
+*L
+5,15:46
+20,6:62
+25,4:68
+29:72,3
+30,2:75
+32:77,3
+33,4:80
+*E

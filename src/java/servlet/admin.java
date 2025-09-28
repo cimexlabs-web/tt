@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import dao.deleteDAO;
+import dao.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.delete_student;
+import model.user;
 
 /**
  *
  * @author Akila Perera
  */
-@WebServlet(name = "Approve", urlPatterns = {"/Approve"})
-public class Approve extends HttpServlet {
+@WebServlet(name = "admin", urlPatterns = {"/admin"})
+public class admin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class Approve extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Approve</title>");            
+            out.println("<title>Servlet admin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Approve at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet admin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,45 +61,36 @@ public class Approve extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
         String id= request.getParameter("id");
-        String status= request.getParameter("status");
-        String team= request.getParameter("team");
-        String mail= request.getParameter("mail");
-        String studentName= request.getParameter("name");
         
-        try {
-        if ("approved".equalsIgnoreCase(status) && !("reject").equals(status)) {
-            String subject = "Table Tennis Registration Approved";
-            String msg = "Dear " + studentName + ",\n\n" +
-             "Congratulations! Your registration for the University Table Tennis Club has been approved.\n" +
-             "You have been assigned to Team: " + team + ".\n\n" +
-             "We have also created an official WhatsApp group where you’ll receive updates about announcements, matches, practices, and other events. Please join using the link below:\n" +
-             //whatsappLink + "\n\n" +
-             "Welcome to our club! We look forward to seeing your active participation.\n\n" +
-             "Best regards,\n" +
-             "President,\n" +
-             "HIrushi Rathnayaka,\n" +
-             "Table Tennis Club,\n" +
-             "NSBM Green Univesity"      ;
-
-            util.MailSender.sendMail(mail, subject, msg);
-        }
-
-        delete_student delete=new delete_student(id);
-        
-        deleteDAO d=new deleteDAO();
-        
-        if(d.deleteStudent(delete))
+        if(id!=null)
         {
-            response.sendRedirect("student_request.jsp");
+            userDAO user=new userDAO();
+            
+            if(user.deleteUser(id))
+            {
+                response.sendRedirect("admin_change.jsp");
+            }
+        }
+        else{
+            
+            String name= request.getParameter("name");
+            String username= request.getParameter("username");
+            String pws = request.getParameter("rpws");
+            String mail= request.getParameter("mail");
+            String type= request.getParameter("type");
+            
+            user u=new user(name, username, pws, mail, type);
+            userDAO user=new userDAO();
+            
+            if(user.addUser(u))
+            {
+                response.sendRedirect("admin_change.jsp");
+            }
+            
         }
         
-            } catch (Exception e) {
-        e.printStackTrace();
-        response.sendRedirect("student_request.jsp?msg=error");
-             }
-        }
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -112,7 +103,9 @@ public class Approve extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        
     }
 
     /**

@@ -43,6 +43,10 @@
                     <i class="fas fa-user-tie"></i>
                     <span>Edit Leaders</span>
                 </a>
+                <a href="admin_change.jsp" class="a-btn">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Change Admins</span>
+                </a>
                 <a href="logout.jsp" class="a-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
