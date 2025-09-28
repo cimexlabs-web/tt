@@ -7,6 +7,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,44 @@ public class webDAO {
             p1.setString(1, wb.getName());
             p1.setString(2, wb.getMail());
             p1.setString(3, wb.getMsg());
+            
+            int row= p1.executeUpdate();
+            
+            return row >0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(webDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    public ResultSet getMsg()
+    {
+        try {
+            String q1= "SELECT * FROM message";
+            Connection con= DBconnection.createconnection();
+            PreparedStatement p1=con.prepareStatement(q1);
+            
+            
+            ResultSet r= p1.executeQuery();
+            
+            return r;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(webDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    }
+    
+    public boolean deleteMsg(String id)
+    {
+        try {
+            String q1= "DELETE FROM message WHERE id=?";
+            Connection con= DBconnection.createconnection();
+            PreparedStatement p1=con.prepareStatement(q1);
+            
+            p1.setString(1, id);
             
             int row= p1.executeUpdate();
             

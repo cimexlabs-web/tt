@@ -18,6 +18,11 @@
     <h1 class="page-title">QR Requests</h1>
     <div class="card-container">
         <%
+            if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role"))))
+        {
+            response.sendRedirect("login.html");
+            return;
+        }
             playerDAO p = new playerDAO();
             ResultSet r = p.getRequestDetail();
             while(r.next()) {
