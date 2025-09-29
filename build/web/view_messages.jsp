@@ -12,6 +12,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/view.css">
+        <script>
+    function x()
+        {
+           return window.confirm("Are you sure ?");
+            
+        }
+    </script>
         <title>Web Messages</title>
     </head>
     <body>
@@ -39,7 +46,7 @@
     <td data-label="First Name"><%= r.getString("name") %></td>
     <td data-label="Last Name"><%= r.getString("email") %></td>
     <td data-label="School"><%= r.getString("message") %></td>
-    <td><a href="deleteMsg?id=<%= r.getString("id")%>">Delete</a></td>
+    <td><a href="deleteMsg?id=<%= r.getString("id")%>" onclick="return x()">Delete</a></td>
     
 </tr>
 

@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="css/web_edit.css">
 
     <title>Edit Vision</title>
-    
+    <script>
+    function x()
+        {
+           return window.confirm("Are you sure ?");
+            
+        }
+    </script>
 </head>
 <body>
 <%
@@ -31,7 +37,7 @@
     <form action="uploadEdit" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="7">
         <textarea name="txt" placeholder="Write Vision text here..." required><%= request.getAttribute("visionText") != null ? request.getAttribute("visionText") : "" %></textarea>
-            <button type="submit" class="submit-btn">Update Text</button>
+            <button type="submit" class="submit-btn" onclick="return x()">Update Text</button>
         </div>
     </form>
 </div>
@@ -52,7 +58,7 @@
                 <div class="image-placeholder" id="visionPlaceholder">Click or Drag & Drop Image Here</div>
             </label>
             <input type="file" name="image7" id="visionPhotoUpload" accept="image/*" onchange="previewVisionImage(event)" required>
-            <button type="submit" class="submit-btn">Update Text</button>
+            <button type="submit" class="submit-btn" onclick="return x()">Update Text</button>
             
 
         

@@ -9,12 +9,47 @@
     
     <link rel="stylesheet" href="css/studentForm.css">
     
+    <script>
+        function x() {
+        let name = document.form.name.value.trim();
+        let batch = document.form.batch.value.trim();
+        let studentId = document.form.studentId.value.trim();
+        let number= document.form.whatsapp.length.trim();
+        
+        // Name should NOT be a number
+        if (!isNaN(name)) {
+            alert("❌ Please don't use numbers for the name");
+            return false;
+        }
+
+        // Batch should be numbers only
+        if (isNaN(batch)) {
+            alert("❌ Batch must be a number");
+            return false;
+        }
+
+        // Student ID must be exactly 5 digits (numbers only)
+        if (isNaN(studentId) || studentId.length !== 5) {
+            alert("❌ Student ID must be a 5-digit number");
+            return false;
+        }
+        
+        if (isNaN(number) || number.length !== 10) {
+            alert("❌ please check your phone number");
+            return false;
+        }
+
+        return true; // allow submission
+    }
+    </script>
+    
+    
 </head>
 <body>
     <div class="form-container">
         <img class="logo" src="mainImage?id=1" alt="Logo">
         <h2>Table Tennis Registration Form</h2>
-        <form action="submit" method="post" >
+        <form action="submit" method="post" name="form"  onsubmit="return x()" >
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -62,7 +97,7 @@
                 <textarea id="achievements" name="achievements" placeholder="List your achievements"></textarea>
             
 
-            <button type="submit">Submit</button>
+                <button type="submit">Submit</button>
             
         </form>
     </div>

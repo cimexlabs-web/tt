@@ -1,8 +1,66 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="dao.playerDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="css/searchPlayer.css">
 
+<html>
+    <head>
+<link rel="stylesheet" href="css/searchPlayer.css">
+<script>
+    function validateFieldForm() {
+        let form = document.forms["updateForm"];
+        let column = form["column"].value;
+        let value = form["value"].value.trim();
+
+        if (column === "name") {
+            if (!/^[A-Za-z\s]+$/.test(value)) {
+                alert("Name should contain only letters and spaces.");
+                return false;
+            }
+        }
+
+        if (column === "batch") {
+            if (!/^[0-9]{2}\.[0-9]$/.test(value)) {
+                alert("Batch must be in format EX: 22.1");
+                return false;
+            }
+        }
+
+        if (column === "phone") {
+            if (!/^\d{10}$/.test(value)) {
+                alert("Phone number must be 10 digits.");
+                return false;
+            }
+        }
+
+        if (column === "mail") {
+            let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(value)) {
+                alert("Enter a valid email address.");
+                return false;
+            }
+        }
+
+        if (column === "sid") {
+            if (!/^[A-Za-z0-9]+$/.test(value)) {
+                alert("SID should only contain letters and numbers.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function validatePhotoForm() {
+        let photo = document.forms["photoForm"]["photo"].value;
+        if (photo === "") {
+            alert("Please select a photo to upload.");
+            return false;
+        }
+        return true;
+    }
+</script>
+    </head>
+    <body>
 <div class="container">
     <h2>Player Details</h2>
 
@@ -72,7 +130,7 @@
                 <td><img src="searchImage?id=<%=sid%>" alt="Player Photo" style="width:100px; height:100px;"></td>
                 <td>
                     <input type="file" name="photo" accept="image/*" required>
-                    <button type="submit" name="field" value="photo">Update</button>
+                    <button type="submit" name="field" value="photo" onclick="return validateFieldForm()">Update</button>
                 </td>
             </tr>
         </table>
@@ -98,7 +156,7 @@
                 <td>
                     <input type="hidden" name="sid" value="<%= sid %>">
                     <input type="text" name="value" placeholder="Enter New Data" required>
-                    <button type="submit" name="field">Update</button>
+                    <button type="submit" name="field" onclick="return validateFieldForm()">Update</button>
                 </td>
         </table>
     </form>
@@ -110,3 +168,5 @@
         }
     %>
 </div>
+    </body>
+</html>

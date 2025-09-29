@@ -6,14 +6,18 @@
 package servlet;
 
 import dao.userDAO;
+import model.user;
+import util.PasswordUtil;  // <-- import here
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.user;
+
 
 /**
  *
@@ -87,20 +91,26 @@ public class admin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String name= request.getParameter("name");
+        try {
+            //processRequest(request, response);
+            String name= request.getParameter("name");
             String username= request.getParameter("username");
             String pws = request.getParameter("rpws");
             String mail= request.getParameter("mail");
             String type= request.getParameter("type");
             
-            user u=new user(name, username, pws, mail, type);
+            String securePassword = PasswordUtil.generateSecurePassword(pws);
+            
+            user u=new user(name, username, securePassword, mail, type);
             userDAO user=new userDAO();
             
             if(user.addUser(u))
             {
                 response.sendRedirect("admin_change.jsp");
             }
+        } catch (Exception ex) {
+            Logger.getLogger(admin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

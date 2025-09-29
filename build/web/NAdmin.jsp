@@ -38,6 +38,10 @@
                     <i class="fas fa-users"></i>
                     <span>Players</span>
                 </a>
+                <a href="edit_leaders.jsp" class="a-btn">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Edit Leaders</span>
+                </a>
                 
                 <a href="message.jsp" class="a-btn">
                     <i class="fas fa-envelope"></i>

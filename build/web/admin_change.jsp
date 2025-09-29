@@ -13,6 +13,12 @@
         <link rel="stylesheet" href="css/admin.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Users</title>
+        <script>
+    function confirmDelete(name) {
+        return confirm("⚠️ Are you sure you want to delete admin: " + name + " ?");
+    }
+</script>
+
     </head>
     <body>
         <div class="nadmin">
@@ -38,7 +44,8 @@
                     <%=rs.getString("mail")%>
                 </div>
                 <div>
-                    <a href="admin?id=<%=rs.getString("id")%>">Delete</a>
+                    <a href="admin?id=<%=rs.getString("id")%>" onclick="return confirmDelete('<%=rs.getString("name")%>')">Delete</a>
+
                 </div>
             </div>
             <%}
@@ -64,7 +71,8 @@
                     <%=rs2.getString("mail")%>
                 </div>
                 <div>
-                    <a href="admin?id=<%=rs2.getString("id")%>">Delete</a>
+                    <a href="admin?id=<%=rs2.getString("id")%>" onclick="return confirmDelete('<%=rs2.getString("name")%>')">Delete</a>
+
                 </div>
                 
             </div>

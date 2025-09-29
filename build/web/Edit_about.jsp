@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="css/web_edit.css">
     <title>Edit About</title>
     
+    <script>
+        function x()
+        {
+           return window.confirm("Are you sure ?");
+            
+        }
+    </script>
+    
 </head>
 <body>
 <%
@@ -42,7 +50,7 @@
                 </div>
             </label>
             <input type="file" name="image<%=i+1%>" id="imageUpload<%=i%>" accept="image/*" onchange="previewImage(event,<%=i%>)" required>
-            <button type="submit" class="submit-btn">Submit</button>
+            <button type="submit" class="submit-btn" onclick="return x()">Submit</button>
         </form>
     </div>
 </div>
@@ -55,7 +63,7 @@
         <textarea name="txt" placeholder="Write About Us here..." required>
             <%= request.getAttribute("aboutText") != null ? request.getAttribute("aboutText") : "" %>
         </textarea>
-        <button type="submit" class="submit-btn">Update Text</button>
+        <button type="submit" class="submit-btn" onclick="return x()">Update Text</button>
     </form>
 </div>
 

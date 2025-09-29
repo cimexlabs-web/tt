@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/css/thankyou.css</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/Script/studentForm.js</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/studentForm.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/main.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/NAdmin.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/Successfully_submit.html</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/search.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/Edit_about.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/util/PasswordUtil.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/add_admin.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/admin.java</file>
         </group>
     </open-files>
 </project-private>

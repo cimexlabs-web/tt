@@ -13,6 +13,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="css/student_r.css">
     <title>QR Requests</title>
+    
+    <script>
+    function confirmAction(message) {
+        return window.confirm(message || "Are you sure?");
+    }
+</script>
+
+    
+    
 </head>
 <body>
     <h1 class="page-title">QR Requests</h1>
@@ -71,12 +80,12 @@
                         
                     </select>
                         
-                    <button type="submit" name="status" value="approved" class="btn approve">
+                    <button type="submit" name="status" value="approved" class="btn approve" onclick="return confirmAction('Approve this student?')">
                         Approve
                     </button>
                 </form>
                 
-                <a href="Approve?id=<%= id %>&status=rejected" class="btn reject">
+                <a href="Approve?id=<%= id %>&status=rejected" class="btn reject" onclick="return confirmAction('Reject this student?')">
                     Not Approve
                 </a>
             </div>
