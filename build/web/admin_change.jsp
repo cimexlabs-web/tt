@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="css/admin.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Change Users</title>
     </head>

@@ -1,0 +1,162 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f9f6;
+    color: #333;
+    padding: 20px;
+}
+
+/* Page Title */
+.page-title {
+    text-align: center;
+    color: #2d6a4f;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Card Grid */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Card */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #dfe6e2;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1b4332;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #dfe6e2;
+    padding-bottom: 8px;
+}
+
+/* Card Details */
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px dashed #e6ece9;
+}
+
+.detail span {
+    font-weight: 600;
+    color: #2d6a4f;
+}
+
+.detail:last-child {
+    border-bottom: none;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-group form,
+.btn-group a {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-select {
+    flex: 2;
+    padding: 8px 12px;
+    border: 1px solid #b7d3c7;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #fff;
+    color: #333;
+    transition: 0.3s ease;
+}
+
+.team-select:focus {
+    outline: none;
+    border-color: #2d6a4f;
+    box-shadow: 0 0 4px rgba(45, 106, 79, 0.3);
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Approve Button */
+.btn.approve {
+    background: #2d6a4f;
+    color: white;
+}
+
+.btn.approve:hover {
+    background: #1b4332;
+}
+
+/* Reject Button */
+.btn.reject {
+    background: #d90429;
+    color: white;
+}
+
+.btn.reject:hover {
+    background: #a0001c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .team-select {
+        width: 100%;
+    }
+}

@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -136,6 +137,47 @@ public class playerDAO {
         }
         
     }
+    
+    
+    public boolean updateText(String sid,String column, String value)
+    {
+        try {
+            String q1="UPDATE player SET "+column+"=? WHERE sid=?";
+            
+            Connection con=DBconnection.createconnection();
+            PreparedStatement p1=con.prepareStatement(q1);
+            
+            p1.setString(1,value);
+            p1.setString(2,sid);
+            int row= p1.executeUpdate();
+            return row >0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(visionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    public boolean updateImg(String sid, InputStream im)
+    {
+        try {
+            String q2="UPDATE player SET photo=? WHERE sid=?";
+            Connection con= DBconnection.createconnection();
+            PreparedStatement p2=con.prepareStatement(q2);
+            p2.setBinaryStream(1,im);
+            p2.setString(2, sid);
+            
+            int row= p2.executeUpdate();
+            return row > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(visionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    
+    
     
     
 }

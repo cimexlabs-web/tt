@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/student_req.css">
+    <link rel="stylesheet" href="css/student_r.css">
     <title>QR Requests</title>
 </head>
 <body>
@@ -31,7 +31,7 @@
         <div class="card">
             <h2><%= r.getString("name") %></h2>
             <div class="card-details">
-                <div class="detail"><span>ID:</span> <%= r.getString("id") %></div>
+                
                 <div class="detail"><span>Batch:</span> <%= r.getString("batch") %></div>
                 <div class="detail"><span>Degree:</span> <%= r.getString("degree") %></div>
                 <div class="detail"><span>Faculty:</span> <%= r.getString("faculty") %></div>
@@ -41,7 +41,7 @@
                 <div class="detail"><span>Email:</span> <%= r.getString("mail") %></div>
                 <div class="detail"><span>School:</span> <%= r.getString("school") %></div>
                 <div class="detail"><span>Experience:</span> <%= r.getString("experience") %></div>
-                <div class="detail"><span>Start Day:</span> <%= r.getString("start_date") %></div>
+                <div class="detail"><span>Start Year:</span> <%= r.getString("start_date") %></div>
                 <div class="detail"><span>Achievement:</span> <%= r.getString("achievement") %></div>
             </div>
 
@@ -68,14 +68,14 @@
                         <option value="boyB">Boys Team B</option>
                         <option value="girlA">Girls Team A</option>
                         <option value="girlB">Girls Team B</option>
-                        <option value="reject">reject</option>
+                        
                     </select>
-
+                        
                     <button type="submit" name="status" value="approved" class="btn approve">
                         Approve
                     </button>
                 </form>
-
+                
                 <a href="Approve?id=<%= id %>&status=rejected" class="btn reject">
                     Not Approve
                 </a>

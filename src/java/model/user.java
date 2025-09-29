@@ -16,7 +16,7 @@ public class user {
     private String pws;
     private String type;
     
-    public user (String name,String username, String mail, String pws, String type)
+    public user (String name,String username,  String pws,String mail, String type)
     {
         this.name=name;
         this.username=username;

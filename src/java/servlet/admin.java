@@ -72,23 +72,7 @@ public class admin extends HttpServlet {
                 response.sendRedirect("admin_change.jsp");
             }
         }
-        else{
-            
-            String name= request.getParameter("name");
-            String username= request.getParameter("username");
-            String pws = request.getParameter("rpws");
-            String mail= request.getParameter("mail");
-            String type= request.getParameter("type");
-            
-            user u=new user(name, username, pws, mail, type);
-            userDAO user=new userDAO();
-            
-            if(user.addUser(u))
-            {
-                response.sendRedirect("admin_change.jsp");
-            }
-            
-        }
+        
         
     }
 
@@ -104,7 +88,19 @@ public class admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+        String name= request.getParameter("name");
+            String username= request.getParameter("username");
+            String pws = request.getParameter("rpws");
+            String mail= request.getParameter("mail");
+            String type= request.getParameter("type");
+            
+            user u=new user(name, username, pws, mail, type);
+            userDAO user=new userDAO();
+            
+            if(user.addUser(u))
+            {
+                response.sendRedirect("admin_change.jsp");
+            }
         
     }
 

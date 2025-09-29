@@ -202,7 +202,7 @@
                 <div class="message-photo">
                     <img src="leaderImage?id=2" alt="Club President">
                     <div class="message-info">
-                        <div class="message-role">President</div>
+                        <div class="message-role">Master in Charge</div>
                         <h3 class="message-name"><%=leader.title(2)%>. <%=leader.name(2)%></h3>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                 <div class="message-photo">
                     <img src="leaderImage?id=3" alt="Club President">
                     <div class="message-info">
-                        <div class="message-role">President</div>
+                        <div class="message-role">Master in Charge</div>
                         <h3 class="message-name"><%=leader.title(3)%>. <%=leader.name(3)%></h3>
                     </div>
                 </div>
