@@ -16,7 +16,7 @@
         <div class="container">
             <form action="search.jsp" method="post">
             <div class="input">
-                <input type="text" name="id" placeholder="Enter Student ID Number">
+                <input type="text" name="id" placeholder="Enter Student ID Number" required>
             </div>
                 <div class="search">
                     <button type="submit">Search</button>

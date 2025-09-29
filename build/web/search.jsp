@@ -71,7 +71,7 @@
                 <th>Photo</th>
                 <td><img src="searchImage?id=<%=sid%>" alt="Player Photo" style="width:100px; height:100px;"></td>
                 <td>
-                    <input type="file" name="photo" accept="image/*">
+                    <input type="file" name="photo" accept="image/*" required>
                     <button type="submit" name="field" value="photo">Update</button>
                 </td>
             </tr>
