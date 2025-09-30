@@ -54,6 +54,11 @@
     </script>
 </head>
 <body>
+    <%
+    if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role")))) {
+        response.sendRedirect("login.html");
+        return;
+    }%>
     <div class="form-container">
         <h1>Add New Player</h1>
         <form name="playerForm" action="uploadPlayer" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
@@ -119,7 +124,8 @@
                 <input type="file" name="photo" accept="image/*" required>
             </div>
             <div class="form-group submit-btn">
-                <button type="submit">Add Player</button>
+                <button type="submit">Add Player</button><br>
+                <a href="javascript:history.back()" class="btn">Back</a> 
             </div>
         </form>
     </div>

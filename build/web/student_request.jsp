@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/student_r.css">
+    <link rel="stylesheet" href="css/student_req.css">
     <title>QR Requests</title>
     
     <script>
@@ -26,6 +26,7 @@
 <body>
     <h1 class="page-title">QR Requests</h1>
     <div class="card-container">
+        <a href="javascript:history.back()" class="back-btn">← Back</a>
         <%
             if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role"))))
         {
@@ -37,6 +38,7 @@
             while(r.next()) {
                 String id = r.getString("id");
         %>
+        
         <div class="card">
             <h2><%= r.getString("name") %></h2>
             <div class="card-details">
@@ -85,7 +87,7 @@
                     </button>
                 </form>
                 
-                <a href="Approve?id=<%= id %>&status=rejected" class="btn reject" onclick="return confirmAction('Reject this student?')">
+                c
                     Not Approve
                 </a>
             </div>

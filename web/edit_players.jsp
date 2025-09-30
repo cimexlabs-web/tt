@@ -13,6 +13,11 @@
         <title>Edit Player</title>
     </head>
     <body>
+        <%
+    if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role")))) {
+        response.sendRedirect("login.html");
+        return;
+    }%>
         <div class="container">
             <form action="search.jsp" method="post">
             <div class="input">

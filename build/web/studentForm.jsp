@@ -51,19 +51,19 @@
         <h2>Table Tennis Registration Form</h2>
         <form action="submit" method="post" name="form"  onsubmit="return x()" >
             <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="e.g. John Wicky" required>
 
             <label for="batch">Batch:</label>
-            <input type="text" id="batch" name="batch" required>
+            <input type="text" id="batch" name="batch" placeholder="e.g. 25.2" required>
 
             <label for="degree">Degree:</label>
-            <input type="text" id="degree" name="degree" required>
+            <input type="text" id="degree" name="degree" placeholder="e.g. Software Engineering (NSBM)" required>
 
             <label for="faculty">Faculty:</label>
-            <input type="text" id="faculty" name="faculty" required>
+            <input type="text" id="faculty" name="faculty" placeholder="e.g. FOC" required>
 
             <label for="studentId">Student ID:</label>
-            <input type="text" id="studentId" name="studentId" required>
+            <input type="text" id="studentId" name="studentId" placeholder="e.g. 12312" required>
 
             <label>Gender:</label>
             <select name="gender" id="gender" required>
@@ -74,13 +74,13 @@
             </select>
 
             <label for="whatsapp">WhatsApp Number:</label>
-            <input type="text" id="whatsapp" name="whatsapp" required>
+            <input type="text" id="whatsapp" name="whatsapp" placeholder="e.g. 0712345678" required>
             
             <label for="mail">Student Mail:</label>
-            <input type="text" id="mail" name="mail" required>
+            <input type="text" id="mail" name="mail" placeholder="e.g. abcperera@students.nsbm.ac.lk" required>
             
             <label for="school">School:</label>
-            <input type="text" id="school" name="school" required>
+            <input type="text" id="school" name="school" placeholder="e.g. Royal Collage, Colombo" required>
             
             <label>Do you have Table Tennis experience?</label>
             <select id="experience" name="experience"  required>

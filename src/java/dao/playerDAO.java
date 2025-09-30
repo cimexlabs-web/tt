@@ -25,8 +25,23 @@ public class playerDAO {
     public boolean addPlayer(player p)
     {
         try {
-            String q1= "INSERT INTO player(name,batch,faculty,sid,gender,phone,mail,school,team,photo,achievement) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             Connection con=DBconnection.createconnection();
+            String q2="SELECT * FROM player WHERE sid=?";
+            PreparedStatement ps2=con.prepareStatement(q2);
+            
+            ps2.setString(1, p.getSid());
+            
+            ResultSet rs=ps2.executeQuery();
+            
+            if(rs.next())
+            {
+                return false;
+            }
+            
+            
+            
+            String q1= "INSERT INTO player(name,batch,faculty,sid,gender,phone,mail,school,team,photo,achievement) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            
             PreparedStatement p1=con.prepareStatement(q1);
             
             p1.setString(1, p.getFname());

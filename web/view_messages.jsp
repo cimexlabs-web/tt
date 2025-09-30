@@ -22,7 +22,12 @@
         <title>Web Messages</title>
     </head>
     <body>
-    <%
+        <%
+    if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role")))) {
+        response.sendRedirect("login.html");
+        return;
+    }
+    
         String team = request.getParameter("team");
         webDAO p = new webDAO();
         

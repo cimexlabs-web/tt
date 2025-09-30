@@ -58,6 +58,11 @@
     </script>
 </head>
 <body>
+    <%
+    if (session == null || !("SAdmin".equals(session.getAttribute("role")))) {
+        response.sendRedirect("login.html");
+        return;
+    }%>
     <h1>Add Admin</h1>
     <form action="admin" method="post" onsubmit="return validateForm()">
         <div class="container">

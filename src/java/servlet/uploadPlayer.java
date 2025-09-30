@@ -113,7 +113,7 @@ public class uploadPlayer extends HttpServlet {
                 }
                 else
                 {
-                    response.getWriter().println("Error");
+                    response.sendRedirect("try_again.html");
                 }
                 
             }

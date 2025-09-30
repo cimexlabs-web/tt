@@ -38,4 +38,23 @@ public class deleteDAO {
         }
     }
     
+    public boolean deletePlayer(delete_student st)
+    {
+        try {
+            String q="DELETE FROM player WHERE sid=?";
+            Connection con= DBconnection.createconnection();;
+            PreparedStatement p1=con.prepareStatement(q);
+            
+            p1.setString(1, st.getId());
+            
+            int row= p1.executeUpdate();
+            
+            return row >0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(deleteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
 }

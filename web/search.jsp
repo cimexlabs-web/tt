@@ -58,12 +58,23 @@
         }
         return true;
     }
+    
+    function confirmAction() {
+        return window.confirm("Are you sure delete this player?");
+    }
+
 </script>
     </head>
     <body>
+        <%
+    if (session == null || !("SAdmin".equals(session.getAttribute("role")) || "NAdmin".equals(session.getAttribute("role")))) {
+        response.sendRedirect("login.html");
+        return;
+    }%>
 <div class="container">
     <h2>Player Details</h2>
-
+    
+        
     <%
         String sid = request.getParameter("id");
         playerDAO p = new playerDAO();
@@ -71,8 +82,10 @@
 
         if(r.next()) {
     %>
+    
     <form action="updateField" method="post" enctype="multipart/form-data">
         <input type="hidden" name="sid" value="<%= sid %>">
+        
         <table>
             <tr>
                 <th>Name</th>
@@ -127,7 +140,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td><img src="searchImage?id=<%=sid%>" alt="Player Photo" style="width:100px; height:100px;"></td>
+                <td><img src="searchImage?id=<%=sid%>" alt="Player Photo" style="width:auto; height:200px;"></td>
                 <td>
                     <input type="file" name="photo" accept="image/*" required>
                     <button type="submit" name="field" value="photo" onclick="return validateFieldForm()">Update</button>
@@ -157,13 +170,20 @@
                     <input type="hidden" name="sid" value="<%= sid %>">
                     <input type="text" name="value" placeholder="Enter New Data" required>
                     <button type="submit" name="field" onclick="return validateFieldForm()">Update</button>
+                    
                 </td>
+                <tr>
+                    <th></th>
+                <td><a href="deletePlayer?sid=<%= sid %>" class="del-btn" onclick="return confirmAction()">Delete This Player</a></td>
+                </tr>
         </table>
+                    
     </form>
     <%
         } else {
     %>
         <p style="color:red; text-align:center;">No player found with ID <%= sid %></p>
+        <a href="edit_players.jsp" class="del-btn" >Go Back</a>
     <%
         }
     %>

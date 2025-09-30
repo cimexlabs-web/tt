@@ -5,26 +5,22 @@
  */
 package servlet;
 
-import dao.userDAO;
-import model.user;
-import util.PasswordUtil;  // <-- import here
+import dao.deleteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import model.delete_student;
 
 /**
  *
  * @author Akila Perera
  */
-@WebServlet(name = "admin", urlPatterns = {"/admin"})
-public class admin extends HttpServlet {
+@WebServlet(name = "deletePlayer", urlPatterns = {"/deletePlayer"})
+public class deletePlayer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +39,10 @@ public class admin extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet admin</title>");            
+            out.println("<title>Servlet deletePlayer</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet admin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet deletePlayer at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,18 +61,20 @@ public class admin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        String id= request.getParameter("id");
+        String sid= request.getParameter("sid");
         
-        if(id!=null)
+        delete_student d= new delete_student(sid);
+        
+        deleteDAO dl= new deleteDAO();
+        
+        if(dl.deletePlayer(d))
         {
-            userDAO user=new userDAO();
-            
-            if(user.deleteUser(id))
-            {
-                response.sendRedirect("admin_change.jsp");
-            }
+            response.sendRedirect("search.jsp");
         }
-        
+        else
+        {
+            response.sendRedirect("search.jsp");
+        }
         
     }
 
@@ -91,31 +89,7 @@ public class admin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            //processRequest(request, response);
-            String name= request.getParameter("name");
-            String username= request.getParameter("username");
-            String pws = request.getParameter("rpws");
-            String mail= request.getParameter("mail");
-            String type= request.getParameter("type");
-            
-            String securePassword = PasswordUtil.generateSecurePassword(pws);
-            
-            user u=new user(name, username, securePassword, mail, type);
-            userDAO user=new userDAO();
-            
-            if(user.addUser(u))
-            {
-                response.sendRedirect("admin_change.jsp");
-            }
-            else
-            {
-                response.sendRedirect("user_error.html");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        processRequest(request, response);
     }
 
     /**

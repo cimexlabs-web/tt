@@ -9,60 +9,72 @@ import java.sql.ResultSet;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import util.PasswordUtil;
 
 public class userDAO {
     
-    public String validateuser(String user,String pws)
-    {
-        String q1= "SELECT * FROM admin WHERE username=? AND password=?";
-        
-        try{
-        
-            Connection con = DBconnection.createconnection();
-            PreparedStatement p1=con.prepareStatement(q1);
+    public String validateuser(String username, String enteredPassword) {
+    String sql = "SELECT password, type FROM admin WHERE username=?";
+    try (Connection con = DBconnection.createconnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String storedPassword = rs.getString("password"); 
+            String role = rs.getString("type");
+
             
-            p1.setString(1, user);
-            p1.setString(2, pws);
-            
-            ResultSet rs1= p1.executeQuery();
-            rs1.next();
-            return rs1.getString("type");
-     
+            if (PasswordUtil.verifyPassword(enteredPassword, storedPassword)) {
+                return role; 
+            }
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            return "error";
-        }
-        
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+                return "error";
+}
+
     
     public boolean addUser(user user)
-    {
-        try {
-            String q2= "INSERT INTO admin (name,username,mail,password,type) VALUES (?,?,?,?,?)";
-            
-            Connection con = DBconnection.createconnection();
-            PreparedStatement p2=con.prepareStatement(q2);
-            
-            p2.setString(1, user.getName());
-            p2.setString(2, user.getUsername());
-            p2.setString(3, user.getMail());
-            p2.setString(4, user.getpassword());
-            p2.setString(5, user.getType());
-            
-            int row= p2.executeUpdate();
-            
-            return row >0;
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(userDAO.class.getName()).log(Level.SEVERE, null, ex);
+{
+    try {
+        Connection con = DBconnection.createconnection();
+        
+        String q4="SELECT * FROM admin WHERE username=?";
+        
+        PreparedStatement p3=con.prepareStatement(q4);
+        p3.setString(1, user.getUsername());
+        ResultSet rs= p3.executeQuery();
+        if(rs.next())
+        {
             return false;
         }
         
         
         
+        
+        
+        String q2= "INSERT INTO admin (name,username,mail,password,type) VALUES (?,?,?,?,?)";
+        
+        
+        PreparedStatement p2=con.prepareStatement(q2);
+        
+        p2.setString(1, user.getName());
+        p2.setString(2, user.getUsername());
+        p2.setString(3, user.getMail());
+        p2.setString(4, user.getpassword());
+        p2.setString(5, user.getType());
+        
+        int row= p2.executeUpdate();
+        
+        return row >0;
+        
+    } catch (SQLException ex) {
+        Logger.getLogger(userDAO.class.getName()).log(Level.SEVERE, null, ex);
+        return false;
     }
+}
     
     public ResultSet viewUser(String type)
     {

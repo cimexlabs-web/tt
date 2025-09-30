@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/util/PasswordUtil.java</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/add_admin.jsp</file>
-            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/admin.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/Error.html</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/css/searchPlayer.css</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/student_request.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/dao/deleteDAO.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/css/student_req.css</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/web/search.jsp</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/model/delete_student.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/deletePlayer.java</file>
+            <file>file:/D:/Projects/New%20folder%20(2)/tt/src/java/servlet/Approve.java</file>
         </group>
     </open-files>
 </project-private>
